@@ -8,8 +8,6 @@ if (!port || port === '') {
   port = 3000;
 }
 
-// app.get('/', (req, res) => res.send('Howdoo'));
-
 // test out sending all rows from trail table
 app.get('/', (req, res) => {
   db.getAllTrails( (rowsRes) => {
@@ -19,12 +17,25 @@ app.get('/', (req, res) => {
 
 app.get('/:trailId/trailInfo', (req, res) => {
   var theId = req.params.trailId;
-  db.getAtrail(theId, (trail) => {
-    // TODO:
-    // getAtrail functioning as-expected
-    // need to call getTags, create array of tags, append to
+  db.getAtrail(theId, (row) => {
+    // TODO
     // trail object for response
-    console.log(trail);
+    var theTrail = row[0];
+    var resObj = {};
+    resObj.data = {};
+    resObj.data.attributes = {};
+    for (var prop in theTrail) {
+      if (prop === 'trail_id') {
+        resObj.data['trail_id'] = theTrail['trail_id'];
+      } else {
+        resObj.data.type = 'trail';
+        resObj.data.attributes[prop] = row[0][prop];
+      }
+    }
+    db.getTags(theId, (tags) => {
+      resObj.data.attributes.tags = tags;
+      res.send(resObj);
+    });
   });
 });
 
