@@ -1,15 +1,21 @@
 {
-  "name": "",
-  "version": "",
-  "description": "",
-  "author": "",
-  "license": "",
+  "name": "ninetrails-trail-service",
+  "version": "0.1.0",
+  "description": "Trail service for the Team Scully 9Trails project",
+  "author": "Jeff Chasin",
+  "private": true,
+  "license": "ISC",
   "engines": {
-    "node": ">=6.13.0"
+    "node": ">=8.12.0"
   },
   "scripts": {
+    "server-dev": "nodemon server/index.js"
   },
   "dependencies": {
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "knex": "^0.15.2",
+    "mysql": "^2.16.0"
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
