@@ -26,7 +26,31 @@ Trail service for 9 Trails
 
 ## Development
 
-[ tbd ]
+To set up:
+
+  ``` sh
+  # cd into directory
+  $> cd trail-service
+  # install dependencies
+  $> npm install
+  # setup .env file (for sql creds)
+  $> touch .env 
+  # seed database `trailService` (change credentials as needed)
+  $> mysql -uroot < schema.sql  
+  ```
+
+  Inside `.env` place your SQL credentials (change if needed)
+  ``` 
+  DB_HOST=localhost
+  DB_USER=root
+  DB_PASS=
+  ```
+
+  To execute:
+
+  ``` sh
+  $> npm run server-dev
+  ```
 
 ### Installing Dependencies
 
