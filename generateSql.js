@@ -1,3 +1,8 @@
+// This is a utility file to generate SQL INSERT statments
+// for the schema.sql file. **You don't need to use this.**
+// To actually seed your database, please see seed-database
+// script in package.json
+
 const loremIpsum = require('lorem-ipsum');
 
 // INSERT INTO trail (trail_id, trail_name, distance,
