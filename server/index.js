@@ -5,7 +5,7 @@ const app = express();
 var port = process.env.PORT;
 
 if (!port || port === '') {
-  port = 3000;
+  port = 3001;
 }
 
 // test out sending all rows from trail table
