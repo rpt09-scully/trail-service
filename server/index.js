@@ -8,12 +8,17 @@ if (!port || port === '') {
   port = 3001;
 }
 
+// Per requirements: Set up express to serve a static app
+// via a differentiating port
+// TODO: will be proxy index.html
+app.use(express.static(__dirname + '/../client/dist'));
+
 // test out sending all rows from trail table
-app.get('/', (req, res) => {
-  db.getAllTrails( (rowsRes) => {
-    res.json(rowsRes);
-  });
-});
+// app.get('/', (req, res) => {
+//   db.getAllTrails( (rowsRes) => {
+//     res.json(rowsRes);
+//   });
+// });
 
 app.get('/:trailId/trailInfo', (req, res) => {
   var theId = req.params.trailId;
