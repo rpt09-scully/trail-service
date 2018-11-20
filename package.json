@@ -23,6 +23,7 @@
     "chai": "^4.2.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "lorem-ipsum": "^1.0.6",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "morgan": "^1.9.1"
   }
 }

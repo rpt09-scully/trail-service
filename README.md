@@ -66,7 +66,11 @@ $> npm install
 
 ## Log
 
+### 2018-11-20 
+
+* 
+
 ### 2018-11-19 
 * Add static route, clean up previous branches
 * Testing dependencies (`test` directory, install Mocha, Chai)
-
+* db.test.js - tests for MySQL query functions in Knex
