@@ -5,7 +5,7 @@ package-lock.json
 .nvmrc
 schema_heroku.sql
 Procfile
-test/
+# test/
 
 ## MAC files ##
 .DS_Store

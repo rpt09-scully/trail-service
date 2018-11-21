@@ -57,3 +57,6 @@ app.get('/:trailId/trailInfo', (req, res) => {
 });
 
 app.listen(port, () => console.log(`Listening on http://localhost:${port}`));
+
+// for Mocha tests
+module.exports = app;

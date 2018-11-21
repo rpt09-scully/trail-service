@@ -66,9 +66,9 @@ $> npm install
 
 ## Log
 
-### 2018-11-20 
+### 2018-11-21 
 
-* 
+* server.test.js instal dependencies, add server app tests
 
 ### 2018-11-19 
 * Add static route, clean up previous branches

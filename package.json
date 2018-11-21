@@ -11,7 +11,7 @@
   "scripts": {
     "seed-database": "mysql -u root -p < schema.sql",
     "server-dev": "nodemon server/index.js",
-    "test": "mocha"
+    "test": "mocha --timeout 5000"
   },
   "dependencies": {
     "dotenv": "^6.1.0",
@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "lorem-ipsum": "^1.0.6",
     "mocha": "^5.2.0",
