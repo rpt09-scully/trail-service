@@ -39,6 +39,7 @@ var getTags = (id, callback) => {
     });
 };
 
+// for testing only
 var getAllTrails = (callback) => {
   knex.select()
     .from('trail')

@@ -15,6 +15,7 @@ Trail service for 9 Trails
 1. [Usage](#Usage)
 2. [Requirements](#Requirements)
 3. [Development](#Development)
+4. [Log](#Log)
 
 ## Usage
 
@@ -35,11 +36,16 @@ To set up:
   $> npm install
   # setup .env file (for sql creds)
   $> touch .env 
-  # seed database `trailService` (change credentials as needed)
+  # seed database `trailService` (change credentials as needed)  
+  # you can either run  
+  $> npm seed-database  
+  # which executes mysql -u root -p < schema.sql  
+  # OR you can simply run  
   $> mysql -uroot < schema.sql  
+  # from the command line, use or modify the `root` users as needed
   ```
 
-  Inside `.env` place your SQL credentials (change if needed)
+  Inside `.env` place your SQL credentials (change if needed)  
   ``` 
   DB_HOST=localhost
   DB_USER=root
@@ -54,4 +60,17 @@ To set up:
 
 ### Installing Dependencies
 
-[ tbd ]
+```sh
+$> npm install
+```
+
+## Log
+
+### 2018-11-21 
+
+* server.test.js instal dependencies, add server app tests
+
+### 2018-11-19 
+* Add static route, clean up previous branches
+* Testing dependencies (`test` directory, install Mocha, Chai)
+* db.test.js - tests for MySQL query functions in Knex

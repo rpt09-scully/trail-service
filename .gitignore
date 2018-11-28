@@ -5,6 +5,7 @@ package-lock.json
 .nvmrc
 schema_heroku.sql
 Procfile
+# test/
 
 ## MAC files ##
 .DS_Store
@@ -30,5 +31,5 @@ coverage
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/
-dist/
+#dist/
 
