@@ -6,7 +6,7 @@ Trail service for Nine Trails Hack Reactor <abbr title="Front End Capstone">FEC<
 
 Part of the Team Scully FEC project to implement different services to be consumed by a proxy page representing a product detail page about hiking trails.
 
-## Related Projects
+**Contents**
 
 * [paths-service](https://github.com/rpt09-scully/paths-service)
 * [profiles-service](https://github.com/rpt09-scully/profile-service)
@@ -101,16 +101,20 @@ This `trail-service` responds to requests for trail detail data when it receives
 $ npm test
 ```
 
+* * *
+
 ## Notes
 
-### Log
+#### Log
 
-#### 2018-12-02 
+##### 2018-12-02 
 
-* Review code review notes, Phase 2 checklist
-* mvp proxy layout
+* Edit and update readme @done
+* Review code review notes, Phase 2 checklist @done
+* Refactor existing tests to Jest @in-process
+* mvp proxy layout @backlog
 
-#### 2018-11-21 - 2018-11-28
+##### 2018-11-21 - 2018-11-28
 
 * Investigate proxy layout ideas
 * Set up [reference repo](https://github.com/rpt09-scully/proxy-reference-files) and files
