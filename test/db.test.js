@@ -1,48 +1,34 @@
 // tests for database/index.js
 require('dotenv').config();
-var db = require('../database/index');
-var expect = require('chai').expect;
-
-/*
- * https://mochajs.org/#arrow-functions
- *
-   Passing arrow functions (“lambdas”) to Mocha is discouraged.
-   Lambdas lexically bind this and cannot access the Mocha
-   context. If you do not need to use Mocha’s context, lambdas
-   should work. However, the result will be more difficult to
-   refactor if the need eventually arises.
- *
- */
+const db = require('../database/index');
 
 // test main database function
 // get trail data from trail_id
-describe('getAtrail() db function', function () {
+test('getAtrail returns results object to callback with all required keys', (done) => {
+  // TODO: change to getTrail
 
-  context('with trail ID argument', function () {
-    it('should return results object to callback with all required keys', function (done) {
-
-      db.getAtrail(1, function (trailResult) {
-        expect(trailResult[0])
-          .to.be.a('object')
-          .and.to.have.all.keys('trail_id', 'trail_name', 'distance', 'distance_units', 'elevation_gain', 'elevation_units', 'description', 'route_type', 'difficulty', 'general_area', 'origin');
-        done();
-      });
-    });
+  db.getAtrail(1, function (trailResult) {
+    expect(trailResult[0]).toBeInstanceOf(Object);
+    expect(trailResult[0]).toHaveProperty('trail_id');
+    expect(trailResult[0]).toHaveProperty('trail_name');
+    expect(trailResult[0]).toHaveProperty('distance');
+    expect(trailResult[0]).toHaveProperty('distance_units');
+    expect(trailResult[0]).toHaveProperty('elevation_gain');
+    expect(trailResult[0]).toHaveProperty('elevation_units');
+    expect(trailResult[0]).toHaveProperty('description');
+    expect(trailResult[0]).toHaveProperty('route_type');
+    expect(trailResult[0]).toHaveProperty('difficulty');
+    expect(trailResult[0]).toHaveProperty('general_area');
+    expect(trailResult[0]).toHaveProperty('origin');
   });
+  done();
 });
 
 // get tags from trail_id
-describe('getTags() db function', function () {
-
-  context('with trail ID argument', function () {
-    it('should return an array of tags with at lease 6 tags', function (done) {
-
-      db.getTags(1, function (tagsResult) {
-        expect(tagsResult)
-          .to.be.a('array')
-          .and.to.have.lengthOf.at.least(6);
-        done();
-      });
-    });
+test('getTags() returns array of tags with at least 6 tags', (done) => {
+  db.getTags(1, function (tagsResult) {
+    expect(tagsResult).toBeInstanceOf(Array);
+    expect(tagsResult.length).toBeGreaterThan(5);
   });
+  done();
 });
