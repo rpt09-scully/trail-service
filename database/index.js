@@ -10,6 +10,10 @@ var knex = require('knex')({
   }
 });
 
+// Get a trail from the database using its `id` and pass the query
+// result row to the callback
+// called from ../server/index.js
+
 var getAtrail = (id, callback) => {
   knex.select()
     .from('trail')
