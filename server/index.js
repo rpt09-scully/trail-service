@@ -2,7 +2,6 @@ const express = require('express');
 const db = require('../database/index');
 const morgan = require('morgan');
 
-
 const app = express();
 var port = process.env.PORT;
 
@@ -51,7 +50,7 @@ app.get('/:trailId/trailInfo', (req, res) => {
     }
     db.getTags(theId, (tags) => {
       resObj.data.attributes.tags = tags;
-      res.send(resObj);
+      res.status(200).send(resObj);
     });
   });
 });

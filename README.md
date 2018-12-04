@@ -107,11 +107,16 @@ $ npm test
 
 #### Log
 
+##### 2018-12-03 
+
+* Refactor existing tests to Jest @done
+* Install babel for Jest & React, and React & webpack cause why not
+
 ##### 2018-12-02 
 
 * Edit and update readme @done
 * Review code review notes, Phase 2 checklist @done
-* Refactor existing tests to Jest @in-process
+* Refactor existing tests to Jest
 * mvp proxy layout @backlog
 
 ##### 2018-11-21 - 2018-11-28
