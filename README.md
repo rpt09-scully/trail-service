@@ -2,11 +2,27 @@
 
 Trail service for Nine Trails Hack Reactor <abbr title="Front End Capstone">FEC</abbr> project. Supplies an API endpoint for trail detail data at `/:trailId/trailInfo` on `port 3001`.
 
+## Contents
+
+<!-- TOC updateOnSave:false -->
+  * [Motivation](#motivation)
+  * [Related Projects](#related-projects)
+  * [Code Style](#code-style)
+  * [Tech/Frameworks used](#techframeworks-used)
+  * [Code Example](#code-example)
+  * [Installation](#installation)
+    * [Installing Dependencies](#installing-dependencies)
+    * [Setup](#setup)
+  * [API Reference](#api-reference)
+  * [Tests](#tests)
+  * [Notes](#notes)
+<!-- /TOC -->
+
 ## Motivation
 
 Part of the Team Scully FEC project to implement different services to be consumed by a proxy page representing a product detail page about hiking trails.
 
-**Contents**
+## Related Projects
 
 * [paths-service](https://github.com/rpt09-scully/paths-service)
 * [profiles-service](https://github.com/rpt09-scully/profile-service)
@@ -23,6 +39,7 @@ Part of the Team Scully FEC project to implement different services to be consum
 * [mySQL](https://dev.mysql.com/doc/refman/5.7/en/)
 * [Express](http://expressjs.com/)
 * [knex](https://github.com/tgriesser/knex)
+* [React](https://reactjs.org/)
 
 ## Code Example
 
@@ -50,6 +67,8 @@ Example JSON response to `http:localhost:3001/1/trailInfo` for a trail with an I
 }
 ```
 
+## Installation
+
 ### Installing Dependencies
 
 ```sh
@@ -59,9 +78,7 @@ $ cd trail-service
 $ npm install
 ```
 
-## Installation
-
-To set up:
+### Setup
 
 ``` sh
 # cd into directory
@@ -107,6 +124,12 @@ $ npm test
 
 #### Log
 
+##### 2018-12-05
+
+* mvp React setup
+* Mockup image of components rendered
+* [wip] mvp proxy layout & comonent structure
+
 ##### 2018-12-03 
 
 * Refactor existing tests to Jest @done
@@ -117,7 +140,7 @@ $ npm test
 * Edit and update readme @done
 * Review code review notes, Phase 2 checklist @done
 * Refactor existing tests to Jest
-* mvp proxy layout @backlog
+* mvp proxy layout
 
 ##### 2018-11-21 - 2018-11-28
 
