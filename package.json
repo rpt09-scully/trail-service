@@ -14,8 +14,7 @@
     "seed-database": "mysql -u root -p < schema.sql",
     "server-dev": "nodemon server/index.js",
     "start": "npm-run-all --parallel server-dev react-dev load-page",
-    "test": "jest --detectOpenHandles",
-    "wp-dev-server": "webpack-dev-server --mode development"
+    "test": "jest --detectOpenHandles"
   },
   "dependencies": {
     "dotenv": "^6.1.0",
