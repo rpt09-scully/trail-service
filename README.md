@@ -124,11 +124,16 @@ $ npm test
 
 #### Log
 
+##### 2018-12-06
+
+* Update trail.jsx with layout structure
+* [wip] proxy page
+
 ##### 2018-12-05
 
-* mvp React setup
+* mvp React placeholder setup
 * Mockup image of components rendered
-* [wip] mvp proxy layout & comonent structure
+* [wip] mvp proxy layout & component structure
 
 ##### 2018-12-03 
 
