@@ -1,7 +1,7 @@
 import React from 'react';
 import style from '../bootstrap.min.css';
 
-export default class Trail extends React.Component {
+export default class Banner extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -29,20 +29,9 @@ export default class Trail extends React.Component {
             <div className={ `${style.bubble} ${style['d-none']} ${style['d-lg-flex']}` }></div>
             <div className={ `${style.bubble} ${style['d-none']} ${style['d-lg-flex']}` }></div>
             <div className={ `${style.bubble}` }></div>
+
           </div>
         </div>
-
-        <div id="main_content" className={ `${style.row} ${style['col-12']} ${style['justify-content-left']}` }>
-          <div className={ `${style['left_col']} ${style['col-sm-12']} ${style['col-md-6']} ${style['col-lg-8']}` }>
-            <div className={ `${style.wrapper}` }>
-              {/* <!-- description tags etc --> */}
-              <div id="trail_description" className={ `${style.servicePlaceholder} ${style.row} ${style['flex-row']} ${style['justify-content-center']} ${style['align-items-center']}` }>
-                <h5>trail description + tags</h5>
-              </div>
-            </div> {/* <!-- end wrapper --> */}
-          </div>
-        </div>
-
       </div>
     );
   }
