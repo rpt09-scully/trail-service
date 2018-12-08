@@ -87,7 +87,7 @@ $ cd trail-service
 $ touch .env 
 # seed database `trailService` (change credentials as needed)  
 # you can either run  
-$ npm seed-database  
+$ npm run seed-database  
 # which executes mysql -u root -p < schema.sql  
 # OR you can simply run  
 $ mysql -u root < schema.sql
