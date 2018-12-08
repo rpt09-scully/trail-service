@@ -124,10 +124,22 @@ $ npm test
 
 #### Log
 
+##### 2018-12-07 
+
+**To Do**
+
+- [ ] Static proxy page with services
+
+* Set up Bootstrap as css module
+  * Add css-loader options to Webpack 
+  * Add css module syntax to Trail.jsx class names
+  * Note: Multiple hyphenated class names with template strings
+
 ##### 2018-12-06
 
 * Update trail.jsx with layout structure
 * [wip] proxy page
+* Investigate css-modules
 
 ##### 2018-12-05
 
