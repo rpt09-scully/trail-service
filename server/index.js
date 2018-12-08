@@ -15,8 +15,8 @@ app.use(morgan('dev'));
 
 // Per requirements: Set up express to serve a static app
 // via a differentiating port
-// TODO: will be proxy index.html
-app.use(express.static(__dirname + '/../client/dist'));
+// http://localhost:3001
+app.use(express.static(__dirname + '/../public'));
 
 // to test sending all rows from trail table
 // app.get('/', (req, res) => {
