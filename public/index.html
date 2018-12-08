@@ -5,14 +5,21 @@
   <title>Nine Trails Trail Service</title>
 </head>
 <body>
-  <div id="trail"></div>
+  <div id="9Trails.TrailService.Banner"></div>
+  <div id="9Trails.TrailService.TrailDescription"></div>
+
   <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
   <script src="http://localhost:3001/app.js"></script>
+
   <script>
     ReactDOM.render(
-      React.createElement(Trail),
-      document.getElementById('trail')
+      React.createElement(Banner), 
+      document.getElementById('9Trails.TrailService.Banner')
+    );
+    ReactDOM.render(
+      React.createElement(TrailDescription), 
+      document.getElementById('9Trails.TrailService.TrailDescription')
     );
   </script>
 </body>

@@ -128,7 +128,8 @@ $ npm test
 
 **To Do**
 
-- [ ] Static proxy page with services
+- [x] Static proxy page with my service
+- [ ] Static proxy page with other services
 
 * Set up Bootstrap as css module
   * Add css-loader options to Webpack 
