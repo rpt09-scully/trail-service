@@ -1,5 +1,19 @@
 import Banner from './components/banner.jsx';
 import TrailDescription from './components/traildescription.jsx';
 
-window.Banner = Banner;
-window.TrailDescription = TrailDescription;
+if (window.NT === undefined) {
+  window.NT = {
+    TrailService: {
+      Banner: {},
+      TrailDescription: {}
+    }
+  };
+} else if (window.NT) {
+  window.NT.TrailService = {
+    Banner: {},
+    TrailDescription: {}
+  };
+}
+
+window.NT.TrailService.Banner = Banner;
+window.NT.TrailService.TrailDescription = TrailDescription;

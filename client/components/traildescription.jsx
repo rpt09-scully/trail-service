@@ -13,7 +13,7 @@ export default class TrailDescription extends React.Component {
         {/* Template strings (template literals) used for css module format of Bootstrap class names */}
         {/* See webpack.config.js css-loader options for localIdentName syntax of css output */}
         
-        <h5>trail description + tags</h5>
+        <h5>Super fancy description and tags</h5>
 
       </div>
     );
