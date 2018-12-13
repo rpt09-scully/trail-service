@@ -14,7 +14,7 @@ var knex = require('knex')({
 // result row to the callback
 // called from ../server/index.js
 
-var getAtrail = (id, callback) => {
+var getTrail = (id, callback) => {
   knex.select()
     .from('trail')
     .where('trail_id', '=', id)
@@ -22,7 +22,7 @@ var getAtrail = (id, callback) => {
       callback(row);
     })
     .catch((error) => {
-      console.error('getAtrail select error: ', error);
+      console.error('getTrail select error: ', error);
     });
 };
 
@@ -56,5 +56,5 @@ var getAllTrails = (callback) => {
 };
 
 module.exports.getAllTrails = getAllTrails;
-module.exports.getAtrail = getAtrail;
+module.exports.getTrail = getTrail;
 module.exports.getTags = getTags;

@@ -3,11 +3,7 @@ const db = require('../database/index');
 const morgan = require('morgan');
 
 const app = express();
-var port = process.env.PORT;
-
-if (!port || port === '') {
-  port = 3001;
-}
+var port = 3001;
 
 // log every request to the console
 // https://www.npmjs.com/package/morgan#dev
@@ -33,7 +29,7 @@ app.use(express.static(__dirname + '/../public'));
 */
 app.get('/:trailId/trailInfo', (req, res) => {
   var theId = req.params.trailId;
-  db.getAtrail(theId, (row) => {
+  db.getTrail(theId, (row) => {
     // trail object for response
     // see example-data.json for example
     var theTrail = row[0];
@@ -42,7 +38,7 @@ app.get('/:trailId/trailInfo', (req, res) => {
     resObj.data.attributes = {};
     for (var prop in theTrail) {
       if (prop === 'trail_id') {
-        resObj.data['trail_id'] = theTrail['trail_id'];
+        resObj.data['id'] = theTrail['trail_id'].toString();
       } else {
         resObj.data.type = 'trail';
         resObj.data.attributes[prop] = row[0][prop];
