@@ -4,10 +4,9 @@ const db = require('../database/index');
 
 // test main database function
 // get trail data from trail_id
-test('getAtrail returns results object to callback with all required keys', (done) => {
-  // TODO: change to getTrail
+test('getTrail returns results object to callback with all required keys', (done) => {
 
-  db.getAtrail(1, function (trailResult) {
+  db.getTrail(1, function (trailResult) {
     expect(trailResult[0]).toBeInstanceOf(Object);
     expect(trailResult[0]).toHaveProperty('trail_id');
     expect(trailResult[0]).toHaveProperty('trail_name');
