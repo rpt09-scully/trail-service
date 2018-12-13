@@ -124,10 +124,13 @@ $ npm test
 
 #### Log
 
+##### 2018-12-10 
+
+* 02_client_setup
+
 ##### 2018-12-07 
 
-**To Do**
-
+**To Do**  
 - [x] Static proxy page with my service
 - [ ] Static proxy page with other services
 

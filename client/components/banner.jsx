@@ -4,7 +4,50 @@ import style from '../bootstrap.min.css';
 export default class Banner extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      trail: {
+        data: {
+          attributes: {
+            trailName: 'Golden Gate Park Trail',
+            distance: 6,
+            distanceUnits: 'miles',
+            elevationGain: 351,
+            elevationUnits: 'ft',
+            description: 'Golden Gate Park Trail is a Bernie favorite. A 6.1 mile heavily trafficked loop trail located near San Francisco, California that features a lake and is good for all skill levels. The trail offers a number of activity options and is accessible year-round. Dogs are also able to use this trail but must be approved by Bernie.',
+            routeType: 'Loop',
+            difficulty: 'Easy',
+            generalArea: 'Golden Gate Park',
+            origin: 'https://www.alltrails.com/trail/us/california/golden-gate-park-trail',
+            tags: ['dogs on leash', 'hiking', 'mountain biking', 'trail running', 'walking', 'views', 'wildlife', 'muddy', 'dog friendly', 'backpacking', 'birding', 'historic site']
+          },
+          trailId: 1,
+          type: 'trail'
+        }
+      },
+      heroPhoto: {
+        data: {
+          type: 'trail-photos',
+          id: '3',
+          attributes: {
+            photoUrl: 'http://aws.amazon.com/sdfsdfwe23fdgr.png',
+            trailId: '1',
+            userId: '33',
+            uploadDate: '2018-09-23T22:58:42.900Z',
+            caption: 'Buffalo in Golden Gate Park',
+            isHeroPhoto: 'true'
+          }
+        }
+      },
+      photoCount: {
+        data: {
+          type: 'trail-photos-count',
+          attributes: {
+            trailId: '1',
+            count: '10'
+          }
+        }
+      }
+    };
   }
 
   render() {
@@ -12,25 +55,22 @@ export default class Banner extends React.Component {
       <div>
         {/* Template strings (template literals) used for css module format of Bootstrap class names */}
         {/* See webpack.config.js css-loader options for localIdentName syntax of css output */}
-        <div id="banner" className={ `${style.row} ${style['flex-row']} ${style['justify-content-center']} ${style['col-12']}` }>
-          {/* <!-- text/overlay content on banner --> */}
-          <div id="banner_content" className={ `${style.row} ${style['flex-row']} ${style['justify-content-left']} ${style['align-items-end']} ${style['col-12']}` }>
-            <div className={ `${style['trail_title_wpr']}` }>
-              <h2>Something something trail name</h2>
-              <p>Bernie trail stuff</p>
-            </div>
+        {/* <!-- text/overlay content on banner --> */}
+        <div id="banner_content" className="row flex-row justify-content-left align-items-end col-12">
+          <div className="trail_title_wpr">
+            <h2>Something something trail name</h2>
+            <p>Bernie trail stuff</p>
           </div>
-          {/* <!-- little bubble badges--> */}
-          <div id="bubble_menu" className={ `${style.row} ${style['flex-row']} ${style['justify-content-around']}` }>
+        </div>
+        {/* <!-- little bubble badges--> */}
+        <div id="bubble_menu" className="row flex-row justify-content-around">
 
-            <div className={ `${style.bubble}` }></div>
-            <div className={ `${style.bubble}` }></div>
-            <div className={ `${style.bubble} ${style['d-none']} ${style['d-lg-flex']}` }></div>
-            <div className={ `${style.bubble} ${style['d-none']} ${style['d-lg-flex']}` }></div>
-            <div className={ `${style.bubble} ${style['d-none']} ${style['d-lg-flex']}` }></div>
-            <div className={ `${style.bubble}` }></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble d-none d-lg-flex"></div>
+          <div className="bubble d-none d-lg-flex"></div>
+          <div className="bubble"></div>
 
-          </div>
         </div>
       </div>
     );
