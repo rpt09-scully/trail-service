@@ -20,7 +20,7 @@ export default class Banner extends React.Component {
             origin: 'https://www.alltrails.com/trail/us/california/golden-gate-park-trail',
             tags: ['dogs on leash', 'hiking', 'mountain biking', 'trail running', 'walking', 'views', 'wildlife', 'muddy', 'dog friendly', 'backpacking', 'birding', 'historic site']
           },
-          trailId: 1,
+          id: '1',
           type: 'trail'
         }
       },
@@ -57,9 +57,10 @@ export default class Banner extends React.Component {
         {/* See webpack.config.js css-loader options for localIdentName syntax of css output */}
         {/* <!-- text/overlay content on banner --> */}
         <div id="banner_content" className="row flex-row justify-content-left align-items-end col-12">
-          <div className="trail_title_wpr">
-            <h2>Something something trail name</h2>
-            <p>Bernie trail stuff</p>
+          <div className="trail_title_wpr d-flex">
+            <img src="https://via.placeholder.com/975x335.png?text=Golden+Gate+Park+Trail" alt="Golden Gate Park Trail"/>
+            {/* <h2>Something something trail name</h2>
+            <p>Bernie trail stuff</p> */}
           </div>
         </div>
         {/* <!-- little bubble badges--> */}
