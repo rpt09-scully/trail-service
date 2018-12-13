@@ -61,7 +61,7 @@ Example JSON response to `http:localhost:3001/1/trailInfo` for a trail with an I
       "origin": "https://www.alltrails.com/trail/us/california/golden-gate-park-trail",
       "tags": ["dogs on leash", "hiking", "mountain biking", "trail running", "walking", "views", "wildlife", "muddy", "dog friendly", "backpacking", "birding", "historic site"]
     },
-    "trail_id": 1,
+    "id": "1",
     "type": "trail"
   }
 }

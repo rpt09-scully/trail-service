@@ -1,7 +1,7 @@
 {
   "data": {
     "type": "trail",
-    "trail_id": 1,
+    "id": "1",
     "attributes": {
       "trail_name": "Golden Gate Park Trail",
       "distance": 6.1,
