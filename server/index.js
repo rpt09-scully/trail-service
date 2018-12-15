@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const db = require('../database/index');
 const morgan = require('morgan');
 
@@ -27,7 +28,7 @@ app.use(express.static(__dirname + '/../public'));
   Example: http://localhost:3001/3/trailInfo
   for the Trail where trail_id === 3
 */
-app.get('/:trailId/trailInfo', (req, res) => {
+app.get('/:trailId/trailInfo', cors(), (req, res) => {
   var theId = req.params.trailId;
   db.getTrail(theId, (row) => {
     // trail object for response
