@@ -58,7 +58,7 @@ body {
   position: relative;
 }
 
-#banner .trail_title_wpr {
+#banner {
   margin-bottom: 60px;
 }
 
@@ -107,6 +107,20 @@ body {
 
 .tab-pane h2{
   margin-bottom: 20px;
+}
+
+.heroPhoto.img-fluid {
+  /* position: relative; */
+}
+
+.heroStats {
+  color: #000;
+  height: auto;
+  left: 40px;
+  position: absolute;
+  text-shadow: 1px 1px #fff;
+  top: 200px;
+  width: auto;
 }
 
 /* Small devices (landscape phones, 576px and up) */

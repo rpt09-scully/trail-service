@@ -39,7 +39,7 @@ export default class Banner extends React.Component {
         type: 'trail-photos',
         id: '3',
         attributes: {
-          photoUrl: 'https://source.unsplash.com/random/975x375',
+          photoUrl: 'https://images.unsplash.com/photo-1501555088652-021faa106b9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=975&h=375&q=80',
           trailId: '5',
           userId: '33',
           uploadDate: '2018-09-23T22:58:42.900Z',
@@ -83,13 +83,16 @@ export default class Banner extends React.Component {
         {/* Template strings (template literals) used for css module format of Bootstrap class names */}
         {/* See webpack.config.js css-loader options for localIdentName syntax of css output */}
         {/* <!-- text/overlay content on banner --> */}
+
         <div id="banner_content" className="row flex-row justify-content-left align-items-end col-12">
-          <div className="trail_title_wpr d-flex">
-            <img src={this.state.heroPhoto.attributes.photoUrl} alt="hero img" />
-            <h2>{this.state.trail.attributes.trailName}</h2>
-            <div>{this.state.trail.attributes.difficulty} <span>⭐️⭐️⭐️ 8 Reviews</span></div>
-            <div><span>&#35;1 of 10 trails in Golden Gate Park</span></div>
-            <div>{this.state.photoCount.data.attributes.count} photos</div>
+          <div className="jumbotron-fluid d-flex">
+            <img className="heroPhoto img-fluid" src={this.state.heroPhoto.attributes.photoUrl} alt="hero img" />
+            <div className="heroStats">
+              <h2>{this.state.trail.attributes.trailName}</h2>
+              <div className="difficulty">{this.state.trail.attributes.difficulty} <span className="reviews">⭐️⭐️⭐️ 8 Reviews</span></div>
+              <div className="rank">&#35;1 of 10 trails in Golden Gate Park</div>
+              <div className="photoCount">{this.state.photoCount.data.attributes.count} photos</div>
+            </div>
           </div>
         </div>
         {/* <!-- little bubble badges--> */}
