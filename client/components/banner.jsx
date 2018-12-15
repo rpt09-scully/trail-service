@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../bootstrap.min.css';
+import style from '../trail-style.css';
 
 export default class Banner extends React.Component {
   constructor(props) {
@@ -87,7 +87,7 @@ export default class Banner extends React.Component {
         <div id="banner_content" className="row flex-row justify-content-left align-items-end col-12">
           <div className="jumbotron-fluid d-flex">
             <img className="heroPhoto img-fluid" src={this.state.heroPhoto.attributes.photoUrl} alt="hero img" />
-            <div className="heroStats">
+            <div className={style.heroStats}>
               <h2>{this.state.trail.attributes.trailName}</h2>
               <div className="difficulty">{this.state.trail.attributes.difficulty} <span className="reviews">⭐️⭐️⭐️ 8 Reviews</span></div>
               <div className="rank">&#35;1 of 10 trails in Golden Gate Park</div>
@@ -97,13 +97,11 @@ export default class Banner extends React.Component {
         </div>
         {/* <!-- little bubble badges--> */}
         <div id="bubble_menu" className="row flex-row justify-content-around">
-
-          <div className="bubble"></div>
-          <div className="bubble"></div>
-          <div className="bubble d-none d-lg-flex"></div>
-          <div className="bubble d-none d-lg-flex"></div>
-          <div className="bubble"></div>
-
+          <div className={style.bubble}></div>
+          <div className={style.bubble}></div>
+          <div className={`style.bubble ${style['d-none']} ${style['d-lg-flex']}`}></div>
+          <div className={`style.bubble ${style['d-none']} ${style['d-lg-flex']}`}></div>
+          <div className={style.bubble}></div>
         </div>
       </div>
     );
