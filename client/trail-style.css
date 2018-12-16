@@ -112,6 +112,23 @@ body {
   width: auto;
 }
 
+.col.tags span {
+  background: rgba(127, 127, 127, 0.5);
+  border-radius: 5px;
+  display: inline-block;
+  font-size: small;
+  margin: 2px;
+  padding: 3px;
+}
+
+.stats {
+  margin-bottom: 15px;
+}
+
+.stats div div {
+  border: 1px solid #000;
+}
+
 /* -----  ----- */
 
 /* Small devices (landscape phones, 576px and up) */
