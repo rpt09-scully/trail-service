@@ -15,7 +15,8 @@ app.use(morgan('dev'));
 // http://localhost:3001
 app.use(express.static(__dirname + '/../public'));
 
-// to test sending all rows from trail table
+// If, for whatever reason you need to test getting & sending all rows from
+// the trail db table:
 // app.get('/', (req, res) => {
 //   db.getAllTrails( (rowsRes) => {
 //     res.json(rowsRes);
@@ -35,15 +36,16 @@ app.get('/:trailId/trailInfo', cors(), (req, res) => {
     // see example-data.json for example
     var theTrail = row[0];
     var resObj = {};
-    resObj.data = {};
-    resObj.data.attributes = {};
+    resObj.data = {
+      attributes: {}
+    };
     for (var prop in theTrail) {
       if (prop === 'trail_id') {
         resObj.data['id'] = theTrail['trail_id'].toString();
       } else {
-        resObj.data.type = 'trail';
         resObj.data.attributes[prop] = row[0][prop];
       }
+      resObj.data.type = 'trail';
     }
     db.getTags(theId, (tags) => {
       resObj.data.attributes.tags = tags;
