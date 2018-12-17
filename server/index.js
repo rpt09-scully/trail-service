@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const db = require('../database/index');
+const service = require('./serviceHelpers');
 const morgan = require('morgan');
 
 const app = express();
@@ -49,7 +50,34 @@ app.get('/:trailId/trailInfo', cors(), (req, res) => {
     }
     db.getTags(theId, (tags) => {
       resObj.data.attributes.tags = tags;
-      res.status(200).send(resObj);
+      res.status(200).json(resObj);
+    });
+  });
+});
+
+/*
+  API endpoint for trail service Banner component state
+  Example response: {"trailId":1,"trailName":"Golden Gate Park
+  Trail","difficulty":"Easy","rank":"#11 ranked trail out of 20"}
+*/
+app.get('/:trailId/banner', cors(), (req, res) => {
+  var theId = req.params.trailId;
+  db.getTrail(theId, (row) => {
+    var theTrail = row[0];
+    // banner state only needs trailName and difficulty from trail-service
+    var resObj = {
+      trailId: theTrail.trail_id,
+      trailName: theTrail.trail_name,
+      difficulty: theTrail.difficulty
+    };
+    // banner state data from reviews and trail-photos services
+    service.getBannerData(theId, (bannerRes) => {
+      resObj.totalReviews = bannerRes.stats.totalReviews;
+      resObj.avgRating = bannerRes.stats.avgRating;
+      resObj.trailRank = bannerRes.rank;
+      resObj.heroUrl = bannerRes.heroUrl;
+      resObj.photosCount = bannerRes.count;
+      res.status(200).json(resObj);
     });
   });
 });
