@@ -6,6 +6,21 @@ const servicePorts = {
   PHOTOS: '3003'
 };
 
+// getBannerData axios functions for multiple concurrent requests
+// https://www.npmjs.com/package/axios#example
+var getTrailStats = (endpoint) => {
+  return axios.get(endpoint);
+};
+var getTrailRank = (endpoint) => {
+  return axios.get(endpoint);
+};
+var getHeroPhoto = (endpoint) => {
+  return axios.get(endpoint);
+};
+var getPhotosCount = (endpoint) => {
+  return axios.get(endpoint);
+};
+
 // get data from reviews-service and trail-photos-service for the Banner
 // component endpoint
 var getBannerData = (id, callback) => {
@@ -15,40 +30,21 @@ var getBannerData = (id, callback) => {
   var heroPhoto = `http://localhost:${servicePorts.PHOTOS}/${id}/heroPhoto`;
   var photosCount = `http://localhost:${servicePorts.PHOTOS}/${id}/photosCount`;
 
-  axios.get(trailStats)
-    .then((response) => {
-      result.stats = response.data;
-    })
-    .catch((error) => {
-      console.error('axios.get trailStats: ', error);
-    });
-
-  axios.get(trailRank)
-    .then((rankResponse) => {
-      result.rank = rankResponse.data;
-    })
-    .catch((err) => {
-      console.error('axios.get trailRank: ', err);
-    });
-
-  axios.get(heroPhoto)
-    .then((heroResponse) => {
-      result.heroUrl = heroResponse.data.data.attributes.photo_url;
-      console.log('heroUrl: ', heroResponse.data.data.attributes.photo_url);
-    })
-    .catch((err) => {
-      console.error('axios.get heroPhoto: ', err);
-    });
-
-  axios.get(photosCount)
-    .then((countResponse) => {
-      result.count = countResponse.data.data.attributes.count;
-      callback(result);
-      console.log('photosCount: ', countResponse.data.data.attributes.count);
-    })
-    .catch((err) => {
-      console.error('axios.get photosCount: ', err);
-    });
+  axios.all([
+    getTrailStats(trailStats),
+    getTrailRank(trailRank),
+    getHeroPhoto(heroPhoto),
+    getPhotosCount(photosCount)
+  ]).then(axios.spread(function (tStats, tRank, hPhoto, pCount) {
+    // all requests should be complete
+    result.stats = tStats.data;
+    result.rank = tRank.data;
+    result.heroUrl = hPhoto.data.data.attributes.photo_url;
+    result.count = pCount.data.data.attributes.count;
+    callback(result);
+  })).catch((error) => {
+    console.error('axios.all catch: ', error);
+  });
 };
 
 module.exports.getBannerData = getBannerData;
