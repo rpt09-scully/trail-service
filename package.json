@@ -40,6 +40,7 @@
     "jest-cli": "^23.6.0",
     "lorem-ipsum": "^1.0.6",
     "morgan": "^1.9.1",
+    "nodemon": "^1.18.9",
     "style-loader": "^0.23.0",
     "supertest": "^3.3.0",
     "webpack": "^4.19.1",
