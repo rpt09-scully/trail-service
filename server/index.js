@@ -44,7 +44,7 @@ app.get('/:trailId/trailInfo', cors(), (req, res) => {
       if (prop === 'trail_id') {
         resObj.data['id'] = theTrail['trail_id'].toString();
       } else {
-        resObj.data.attributes[prop] = row[0][prop];
+        resObj.data.attributes[prop] = theTrail[prop];
       }
       resObj.data.type = 'trail';
     }
@@ -57,8 +57,6 @@ app.get('/:trailId/trailInfo', cors(), (req, res) => {
 
 /*
   API endpoint for trail service Banner component state
-  Example response: {"trailId":1,"trailName":"Golden Gate Park
-  Trail","difficulty":"Easy","rank":"#11 ranked trail out of 20"}
 */
 app.get('/:trailId/banner', cors(), (req, res) => {
   var theId = req.params.trailId;
@@ -77,6 +75,29 @@ app.get('/:trailId/banner', cors(), (req, res) => {
       resObj.trailRank = bannerRes.rank;
       resObj.heroUrl = bannerRes.heroUrl;
       resObj.photosCount = bannerRes.count;
+      res.status(200).json(resObj);
+    });
+  });
+});
+
+/*
+  API endpoint for trail service TrailDescription component state
+*/
+app.get('/:trailId/trailDescription', cors(), (req, res) => {
+  var theId = req.params.trailId;
+  db.getTrail(theId, (row) => {
+    // trail object for response to trailDescription component
+    var theTrail = row[0];
+    var resObj = {
+      description: theTrail.description,
+      distance: theTrail.distance,
+      distanceUnits: theTrail.distance_units,
+      elevationGain: theTrail.elevation_gain,
+      elevationUnits: theTrail.elevation_units,
+      routeType: theTrail.route_type,
+    };
+    db.getTags(theId, (tags) => {
+      resObj.tags = tags;
       res.status(200).json(resObj);
     });
   });
