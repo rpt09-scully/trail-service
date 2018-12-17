@@ -4,43 +4,63 @@ import style from '../trail-style.css';
 export default class TrailDescription extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      fetching: true,
+      trailDesc: {}
+    };
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:3001/1/trailDescription')
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        this.setState( (prevState) => ({
+          trailDesc: json,
+          fetching: false
+        }));
+        // console.log('json :', json.data);
+      })
+      .catch((error) => {
+        console.error('fetch trailDesc error: ', error);
+      });
   }
 
   render() {
-    return (
+    const trailTags = this.state.trailDesc.tags.map((tag) => <span>tag</span>);
+
+    return (this.state.fetching) ? (<div className="fetching"></div>) : (
       <div className="row flex-row justify-content-left col-8">
         {/* Template strings (template literals) used for css module format of Bootstrap class names */}
         {/* See webpack.config.js css-loader options for localIdentName syntax of css output */}
         <div className="col">
-          <p>Golden Gate Park Trail is a 6.1 mile heavily trafficked loop trail located near San Francisco, California that features a lake and is good for all skill levels. The trail offers a number of activity options and is accessible year-round. Dogs are also able to use this trail but must be kept on leash.</p>
+          <p>{this.state.trailDesc.description}</p>
 
           <div className={`row ${style.stats}`}>
             <div className="col">
               <div className="d-flex justify-content-center">
                 Distance<br />
-                6.1 miles
+                {this.state.trailDesc.distance} {this.state.trailDesc.distanceUnits}
               </div>
             </div>
             <div className="col">
               <div className="d-flex justify-content-center">
                 Elevation Gain<br />
-                351 feet
+                {this.state.trailDesc.elevation} {this.state.trailDesc.elevationUnits}
               </div>
             </div>
             <div className="col">
               <div className="d-flex justify-content-center">
                 Route Type<br />
-                Loop
+                {this.state.trailDesc.routeType}
               </div>
             </div>
           </div>
 
           <div className="row">
             <div className={`${style.col} ${style.tags}`}>
-              <span>dogs on leash</span> <span>kid friendly</span> <span>birding</span> <span>hiking</span> <span>mountain biking</span>
-              <span>nature trips</span> <span>road biking</span> <span>trail running</span> <span>walking</span> <span>forest</span> <span>lake</span>
-              <span>partially paved</span>
+              {trailTags}
             </div>
           </div>
         </div>
