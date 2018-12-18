@@ -43,7 +43,8 @@ var getTags = (id, callback) => {
     });
 };
 
-// for testing only
+// for testing or whatev
+// Not used in FEC implementation
 var getAllTrails = (callback) => {
   knex.select()
     .from('trail')
