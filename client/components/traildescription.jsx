@@ -1,17 +1,19 @@
 import React from 'react';
 import axios from 'axios';
-import style from '../trail-style.css';
+import getTrailId from '../helpers/getId';
+import style from '../css/trailDescStyle.css';
 
 export default class TrailDescription extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      activeTrail: getTrailId(),
       trailDesc: null
     };
   }
 
   componentDidMount() {
-    this._asyncRequest = axios.get('http://localhost:3001/1/trailDescription')
+    this._asyncRequest = axios.get(`http://localhost:3001/${this.state.activeTrail}/trailDescription`)
       .then(response => {
         this._asyncRequest = null;
         this.setState({ trailDesc: response.data });
