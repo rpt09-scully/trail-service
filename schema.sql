@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS trailService;
+/* DROP DATABASE IF EXISTS trailService;
 
-CREATE DATABASE trailService;
+CREATE DATABASE trailService; */
 
 USE trailService;
 

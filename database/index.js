@@ -1,11 +1,24 @@
 require('dotenv').config();
 
+if (process.env.RDS_HOSTNAME) {
+  var dbh = process.env.RDS_HOSTNAME;
+  var dbu = process.env.RDS_USERNAME;
+  var dbpass = process.env.RDS_PASSWORD;
+  var dbport = process.env.RDS_PORT;
+} else {
+  var dbh = process.env.DB_HOST;
+  var dbu = process.env.DB_USER;
+  var dbp = process.env.DB_PASS;
+  var dbport = null;
+}
+
 var knex = require('knex')({
   client: 'mysql',
   connection: {
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
+    host: dbh,
+    user: dbu,
+    password: dbpass,
+    port: dbport,
     database: 'trailService'
   }
 });

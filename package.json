@@ -13,7 +13,8 @@
     "react-dev": "webpack -d --watch",
     "seed-database": "mysql -u root -p < schema.sql",
     "server-dev": "nodemon server/index.js",
-    "start": "npm-run-all --parallel server-dev react-dev load-page",
+    "start": "node server/index.js",
+    "start:dev": "npm-run-all --parallel server-dev react-dev load-page",
     "test": "jest --detectOpenHandles"
   },
   "dependencies": {
@@ -21,6 +22,8 @@
     "express": "^4.16.4",
     "knex": "^0.15.2",
     "mysql": "^2.16.0",
+    "node-gyp": "^3.8.0",
+    "node-pre-gyp": "^0.12.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2"
   },
