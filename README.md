@@ -14,13 +14,14 @@ Trail service for Nine Trails Hack Reactor <abbr title="Front End Capstone">FEC<
     * [Installing Dependencies](#installing-dependencies)
     * [Setup](#setup)
   * [API Reference](#api-reference)
+    * [Internal End Points](#internal-endpoints)  
   * [Tests](#tests)
   * [Notes](#notes)
 <!-- /TOC -->
 
 ## Motivation
 
-Part of the Team Scully FEC project to implement different services to be consumed by a proxy page representing a product detail page about hiking trails.
+Part of the Team Scully FEC project implementing different services to be consumed by a proxy page representing a product detail page about hiking trails.
 
 ## Related Projects
 
@@ -30,16 +31,15 @@ Part of the Team Scully FEC project to implement different services to be consum
 * trail-service: [Current]
 * [reviews-service](https://github.com/rpt09-scully/reviews-service)
 
-## Code Style
+## Code Style Guide
 
 [![Style Guide: Hack Reactor](https://img.shields.io/badge/Style%20Guide-Hack%20Reactor-blue.svg)](https://github.com/hackreactor-labs/eslint-config-hackreactor)
 
 ## Tech/Frameworks used
 
-* [mySQL](https://dev.mysql.com/doc/refman/5.7/en/)
-* [Express](http://expressjs.com/)
-* [knex](https://github.com/tgriesser/knex)
-* [React](https://reactjs.org/)
+* Database: [mySQL](https://dev.mysql.com/doc/refman/5.7/en/) & [knex](https://knexjs.org/)  
+* Server: [Express](http://expressjs.com/), [axios](https://www.npmjs.com/package/axios)  
+* Client: [React](https://reactjs.org/)
 
 ## Code Example
 
@@ -66,6 +66,8 @@ Example JSON response to `http:localhost:3001/1/trailInfo` for a trail with an I
   }
 }
 ```
+
+Note: This structure _mostly_ follows the [JSON API](https://jsonapi.org/format/) specification. The team didn't get crazy with [relationships](https://jsonapi.org/format/#document-resource-object-relationships) so ¯\_(ツ)_/¯.  
 
 ## Installation
 
@@ -112,7 +114,13 @@ $ npm run server-dev
 
 This `trail-service` responds to requests for trail detail data when it receives a trail ID in the format `/:trailId/trailInfo`. See [code example](#code-example) above for response structure.
 
+### Internal End Points
+
+The `trail-service` API described above serves the other services in the project, see [Related Projects](#related-projects) above. The `/:trailId/banner` and `/:trailId/trailDescription` end points provide pre-shaped data responses to the two React components, `banner` and `traildescription`. Both of these additional end points are publicly available, but not intended to be consumed by other services in the [Related Projects](#related-projects).
+
 ## Tests
+
+TODO:  big time
 
 ```sh
 $ npm test
@@ -123,6 +131,8 @@ $ npm test
 ## Notes
 
 #### Log
+
+TODO:
 
 ##### 2018-12-10 
 
