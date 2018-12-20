@@ -1,40 +1,35 @@
 var axios = require('axios');
 
-// service ports TODO: move to config file
-const servicePorts = {
-  REVIEWS: '3004',
-  PHOTOS: '3003'
-};
-
-// getBannerData axios functions for multiple concurrent requests
-// https://www.npmjs.com/package/axios#example
-var getTrailStats = (endpoint) => {
-  return axios.get(endpoint);
-};
-var getTrailRank = (endpoint) => {
-  return axios.get(endpoint);
-};
-var getHeroPhoto = (endpoint) => {
-  return axios.get(endpoint);
-};
-var getPhotosCount = (endpoint) => {
-  return axios.get(endpoint);
-};
-
 // get data from reviews-service and trail-photos-service for the Banner
 // component endpoint
 var getBannerData = (id, callback) => {
-  var result = {};
-  var trailStats = `http://localhost:${servicePorts.REVIEWS}/${id}/trailStats`;
-  var trailRank = `http://localhost:${servicePorts.REVIEWS}/${id}/trailRank`;
-  var heroPhoto = `http://localhost:${servicePorts.PHOTOS}/${id}/heroPhoto`;
-  var photosCount = `http://localhost:${servicePorts.PHOTOS}/${id}/photosCount`;
+  // Production (deployed) services:
+  if (process.env.RDS_HOSTNAME) {
+    var serviceHost = {
+      REVIEWS: 'http://reviewservice.jsxvmg3wq3.us-west-1.elasticbeanstalk.com',
+      PHOTOS: 'http://trail-photos-service-dev.us-west-1.elasticbeanstalk.com'
+    };
+  } else {
+    // Dev (local) services:
+    var serviceHost = {
+      REVIEWS: 'http://localhost:3004',
+      PHOTOS: 'http://localhost:3003'
+    };
+  }
 
+  var result = {};
+  var trailStats = `${serviceHost.REVIEWS}/${id}/trailStats`;
+  var trailRank = `${serviceHost.REVIEWS}/${id}/trailRank`;
+  var heroPhoto = `${serviceHost.PHOTOS}/${id}/heroPhoto`;
+  var photosCount = `${serviceHost.PHOTOS}/${id}/photosCount`;
+
+  // getBannerData axios functions for multiple concurrent requests
+  // https://www.npmjs.com/package/axios#example
   axios.all([
-    getTrailStats(trailStats),
-    getTrailRank(trailRank),
-    getHeroPhoto(heroPhoto),
-    getPhotosCount(photosCount)
+    axios.get(trailStats),
+    axios.get(trailRank),
+    axios.get(heroPhoto),
+    axios.get(photosCount)
   ]).then(axios.spread(function (tStats, tRank, hPhoto, pCount) {
     // all requests should be complete
     result.stats = tStats.data;

@@ -8,7 +8,7 @@ if (process.env.RDS_HOSTNAME) {
 } else {
   var dbh = process.env.DB_HOST;
   var dbu = process.env.DB_USER;
-  var dbp = process.env.DB_PASS;
+  var dbpass = process.env.DB_PASS;
   var dbport = null;
 }
 

@@ -13,7 +13,8 @@ export default class TrailDescription extends React.Component {
   }
 
   componentDidMount() {
-    this._asyncRequest = axios.get(`http://trail-env.8jhbbn2nrv.us-west-2.elasticbeanstalk.com/${this.state.activeTrail}/trailDescription`)
+    let endpoint = (process.env.ENVIRONMENT === 'prod') ? `http://trail-env.8jhbbn2nrv.us-west-2.elasticbeanstalk.com/${this.state.activeTrail}/trailDescription` : `http://localhost:3001/${this.state.activeTrail}/trailDescription`;
+    this._asyncRequest = axios.get(endpoint)
       .then(response => {
         this._asyncRequest = null;
         this.setState({ trailDesc: response.data });

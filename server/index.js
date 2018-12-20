@@ -28,6 +28,8 @@ app.get('/:trailId(\\d+$)*?', (req, res) => {
 
 app.use('/:trailId', trailInfo);
 
-app.listen(port, () => console.log(`Listening on http://localhost:${port}`));
+var serviceHost = (process.env.RDS_HOSTNAME) ? 'http://trail-env.8jhbbn2nrv.us-west-2.elasticbeanstalk.com' : `http://localhost:${port}`;
+
+app.listen(port, () => console.log(`trail-service widget listening on ${serviceHost}`));
 
 module.exports = app;

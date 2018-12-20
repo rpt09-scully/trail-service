@@ -9,18 +9,20 @@
     "node": ">=8.12.0"
   },
   "scripts": {
-    "load-page": "open http://localhost:3001",
-    "react-dev": "webpack -d --watch",
+    "react-dev": "webpack -d --env.ENVIRONMENT=dev --watch",
+    "react-prod": "webpack --env.ENVIRONMENT=prod",
     "seed-database": "mysql -u root -p < schema.sql",
     "server-dev": "nodemon server/index.js",
     "start": "node server/index.js",
-    "start:dev": "npm-run-all --parallel server-dev react-dev load-page",
     "test": "jest --detectOpenHandles"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
     "knex": "^0.15.2",
+    "morgan": "^1.9.1",
     "mysql": "^2.16.0",
     "node-gyp": "^3.8.0",
     "node-pre-gyp": "^0.12.0",
@@ -32,7 +34,6 @@
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
-    "axios": "^0.18.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.2",
@@ -42,12 +43,10 @@
     "jest": "^23.6.0",
     "jest-cli": "^23.6.0",
     "lorem-ipsum": "^1.0.6",
-    "morgan": "^1.9.1",
     "nodemon": "^1.18.9",
     "style-loader": "^0.23.0",
     "supertest": "^3.3.0",
     "webpack": "^4.19.1",
-    "webpack-cli": "^3.1.1",
-    "webpack-dev-server": "^3.1.8"
+    "webpack-cli": "^3.1.1"
   }
 }
