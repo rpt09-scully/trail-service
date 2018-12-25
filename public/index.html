@@ -32,11 +32,7 @@
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.5.2/umd/react.development.js" integrity="sha256-VitF3nhtwS4oxyddypEINBEyVS3xyk0Ngmk0daEnick=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.5.2/umd/react-dom.development.js" integrity="sha256-8wd2P2Yj4wkD78XfzxVjDjEFKYEWR3jgZKgNCGUW9rI=" crossorigin="anonymous"></script>
-  <!-- {{#if env_prod}} -->
-  <script src="http://trail-env.8jhbbn2nrv.us-west-2.elasticbeanstalk.com/app.js"></script>
-  <!-- {{else}} -->
-  <!-- <script src="http://localhost:3001/app.js"></script> -->
-  <!-- {{/if}} -->
+  <script src="{{appSource}}"></script>
 
   <script>
     ReactDOM.render(
