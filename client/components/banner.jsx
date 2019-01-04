@@ -36,8 +36,8 @@ export default class Banner extends React.Component {
       return <div className="fetching"></div>;
     } else {
       return (
-        <div id="banner_content" className={`${style.bannerContent} row flex-row justify-content-left align-items-end col-12`}>
-          <div className={`${style['jumbotron-fluid']} d-flex`}>
+        <div id="banner_content" className={`${style.bannerContent} row flex-row justify-content-center align-items-end col-12`}>
+          <div className={`${style.bannerImg} jumbotron-fluid d-flex`}>
             <img className="heroPhoto img-fluid" src={this.state.trail.heroUrl} alt="hero img" />
             <div className={style.heroStats}>
               <h2>{this.state.trail.trailName}</h2>
