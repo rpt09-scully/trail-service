@@ -1,106 +1,12 @@
-* {
-  box-sizing: border-box;
-}
-
-body {
-  background-color: #fff;
-}
-
-.container {
-  background: #fff;
-  max-width: 2600px;
-  min-height: 100vh;
-}
-
-#menu {
-  text-align: center;
-  padding: 20px;
-}
-
-#menu ul {
-  padding-left: 15px;
-}
-
-#menu input {
-  width: 100%;
-}
-
-#menu li{
-  list-style-type: none;
-  display: inline-block;
-}
-
-#search_bar_wpr {
-  padding: 0;
-}
-
-#main {
-  justify-content: center;
-  align-items: center;
-}
-
-/* components */
-
-#banner {
-  min-height: 350px;
-  background: #569654;
-  position: relative;
-}
-
-#banner {
-  margin-bottom: 60px;
-}
-
-#bubble_menu {
-  position: absolute;
-  bottom: 0;
-  width: 80%;
-}
-
-#bubble_menu .bubble {
-  width: 60px;
-  height: 60px;
-  transform: translateY(50%);
-  border-radius: 50%;
-  background: #dfdfdf;
-}
-
-
-
-#main_content {
-  margin-top: 50px;
-}
-
-#main_content .wrapper {
-  padding: 5px;
-}
-
-.servicePlaceholder {
-  background: #dfdfdf;
-  margin: 40px 0 ;
-  min-height: 200px;
-}
-
-#tab_content {
-  padding: 0 2.0rem 0 2rem;
-  padding-bottom: 50px;
-}
-
-.tab-pane .servicePlaceholder {
-  margin: 10px 0;
-}
-
-.tab-pane {
-  margin-top: 15px;
-}
-
-.tab-pane h2{
-  margin-bottom: 20px;
-}
-/* ------------ Trail Service Components ------------ */
+/* ------------ Banner Component CSS ------------ */
 
 .bannerContent {
   max-height: 375px;
+}
+
+.bannerImg {
+  max-height: 375px;
+  position: relative;
 }
 
 .heroStats {
@@ -115,49 +21,10 @@ body {
   width: auto;
 }
 
-.bannerImg {
-  max-height: 375px;
-  position: relative;
+.heroStats h2 {
+  font-size: 1.35rem;
 }
 
-.col.tags span {
-  background: rgba(127, 127, 127, 0.5);
-  border-radius: 5px;
-  display: inline-block;
+.heroStats div {
   font-size: small;
-  margin: 2px;
-  padding: 3px;
-}
-
-.stats {
-  margin-bottom: 15px;
-}
-
-.stats div div {
-  border: 1px solid #000;
-}
-
-/* -----  ----- */
-
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
-  
-}
-
-/* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
-  .right_col {
-    position: absolute;
-    right: 15px;
-  }
-}
-
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
- 
-}
-
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
- 
 }
