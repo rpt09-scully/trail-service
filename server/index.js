@@ -1,33 +1,36 @@
 const express = require('express');
 const app = express();
 require('dotenv').config();
-const trailInfo = require('./trailInfo');
 const path = require('path');
-
+const cors = require('cors');
 const morgan = require('morgan');
+const hbe = require('express-handlebars');
+const trailInfo = require('./trailInfo');
+
 const port = process.env.PORT || 3001;
 
 // log every request to the console
 // https://www.npmjs.com/package/morgan#dev
 app.use(morgan('dev'));
+app.use(cors());
 
-// cors
-app.use('/', function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
-// Per requirements: Set up express to serve a static app
-// via a differentiating port
-// http://localhost:3001
-app.use(express.static(__dirname + '/../public'));
-// handle trailId in URL
-app.get('/:trailId(\\d+$)*?', (req, res) => {
-  res.status(200).sendFile(path.resolve(__dirname + '/../public/index.html'));
-});
+app.engine('html', hbe());
+app.set('view engine', 'html');
+app.set('views', path.resolve(__dirname + '/../public'));
+
+// Serve static index.html w bundle from ../public
+app.use(express.static(path.resolve(__dirname + '/../public')));
+
+// Pass bundle location for dev or prod
+const bundleSource = (port === 3001) ? 'http://localhost:3001/app.js' : 'http://trail-env.8jhbbn2nrv.us-west-2.elasticbeanstalk.com/app.js' ;
 
 app.use('/:trailId', trailInfo);
+app.get('/:trailId(\\d+$)*?', (req, res) => {
+  res.status(200).render('../public/index', {appSource: bundleSource});
+});
 
-app.listen(port, () => console.log(`Listening on http://localhost:${port}`));
+// Console log for dev or prod
+var serviceHost = (process.env.RDS_HOSTNAME) ? 'http://trail-env.8jhbbn2nrv.us-west-2.elasticbeanstalk.com' : `http://localhost:${port}`;
+app.listen(port, () => console.log(`trail-service widget listening on ${serviceHost}`));
 
 module.exports = app;

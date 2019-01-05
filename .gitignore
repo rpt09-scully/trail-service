@@ -3,8 +3,6 @@ node_modules/
 package-lock.json
 .notes
 .nvmrc
-schema_heroku.sql
-Procfile
 .ideas
 # test/
 
@@ -34,3 +32,8 @@ coverage
 build/
 #dist/
 
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/
+.ebextensions/
+.ebignore
