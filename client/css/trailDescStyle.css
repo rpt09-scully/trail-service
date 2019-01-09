@@ -1,4 +1,10 @@
 /* ------------ Trail Description Component CSS ------------ */
+.trailDesc {
+    background: #dfdfdf;
+    margin: 40px 0;
+    min-height: 200px;
+}
+
 .col.tags span {
   background: rgba(127, 127, 127, 0.5);
   border-radius: 5px;

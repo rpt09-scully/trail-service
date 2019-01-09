@@ -37,7 +37,7 @@ export default class TrailDescription extends React.Component {
     } else {
       const trailTags = this.state.trailDesc.tags.map((tag, i) => <span key={i}>{tag}</span>);
       return (
-        <div className="row flex-row justify-content-left col-8">
+        <div className={`${style.trailDesc} row flex-row justify-content-left col-8`}>
           {/* Template strings (template literals) used for css module format of Bootstrap class names */}
           {/* See webpack.config.js css-loader options for localIdentName syntax of css output */}
           <div className="col">
