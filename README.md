@@ -120,8 +120,6 @@ The `trail-service` API described above serves the other services in the project
 
 ## Tests
 
-TODO:  big time
-
 ```sh
 $ npm test
 ```
@@ -130,60 +128,3 @@ $ npm test
 
 ## Notes
 
-#### Log
-
-TODO:
-
-##### 2018-12-10 
-
-* 02_client_setup
-
-##### 2018-12-07 
-
-**To Do**  
-- [x] Static proxy page with my service
-- [ ] Static proxy page with other services
-
-* Set up Bootstrap as css module
-  * Add css-loader options to Webpack 
-  * Add css module syntax to Trail.jsx class names
-  * Note: Multiple hyphenated class names with template strings
-
-##### 2018-12-06
-
-* Update trail.jsx with layout structure
-* [wip] proxy page
-* Investigate css-modules
-
-##### 2018-12-05
-
-* mvp React placeholder setup
-* Mockup image of components rendered
-* [wip] mvp proxy layout & component structure
-
-##### 2018-12-03 
-
-* Refactor existing tests to Jest @done
-* Install babel for Jest & React, and React & webpack cause why not
-
-##### 2018-12-02 
-
-* Edit and update readme @done
-* Review code review notes, Phase 2 checklist @done
-* Refactor existing tests to Jest
-* mvp proxy layout
-
-##### 2018-11-21 - 2018-11-28
-
-* Investigate proxy layout ideas
-* Set up [reference repo](https://github.com/rpt09-scully/proxy-reference-files) and files
-* Need to keep this log updated more frequently
-
-#### 2018-11-21 
-
-* server.test.js instal dependencies, add server app tests
-
-#### 2018-11-19 
-* Add static route, clean up previous branches
-* Testing dependencies (`test` directory, install Mocha, Chai)
-* db.test.js - tests for MySQL query functions in Knex
