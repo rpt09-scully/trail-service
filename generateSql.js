@@ -95,5 +95,14 @@ const trailTags = function () {
   return str;
 };
 
-module.exports.trailStrings = trailStrings;
-module.exports.trailTags = trailTags;
+
+module.exports = {
+  trailStrings,
+  trailtags,
+  setDifficulty,
+  setRouteType,
+  setOrigin,
+  setNumber,
+  words,
+  sentences
+}

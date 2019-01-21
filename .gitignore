@@ -37,3 +37,5 @@ build/
 .elasticbeanstalk/
 .ebextensions/
 .ebignore
+
+*/milly.csv
