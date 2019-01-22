@@ -20,7 +20,7 @@ const csvWriter = createCsvWriter({
 
 const records = [];
 
-for (var i = 101; i < 200; i ++) {
+for (var i = 101; i <= 1000000; i ++) {
   records.push({
     trail_id: i,
     trail_name: seedFuncs.setTrailName(),
@@ -38,7 +38,7 @@ for (var i = 101; i < 200; i ++) {
 
 csvWriter.writeRecords(records)       // returns a promise
     .then(() => {
-        console.log('...Done');
+        console.log('ONE MILLION RECORDS!');
     });
 
 
