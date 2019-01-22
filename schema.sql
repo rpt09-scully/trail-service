@@ -1,6 +1,6 @@
-/* DROP DATABASE IF EXISTS trailService;
+DROP DATABASE IF EXISTS trailService;
 
-CREATE DATABASE trailService; */
+CREATE DATABASE trailService;
 
 USE trailService;
 
@@ -17,13 +17,13 @@ CREATE TABLE trail (
   general_area varchar(70),
   origin varchar(100),
   PRIMARY KEY (trail_id)
-) ENGINE=InnoDB;
+);
 
 CREATE TABLE tags (
   tag_id int NOT NULL,
   tag_name varchar(30) NOT NULL,
   PRIMARY KEY (tag_id)
-) ENGINE=InnoDB;
+);
 
 CREATE TABLE trail_tags (
   trail_id int NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE trail_tags (
   PRIMARY KEY (trail_id, tag_id),
   FOREIGN KEY (trail_id) REFERENCES trail (trail_id),
   FOREIGN KEY (tag_id) REFERENCES tags (tag_id)
-) ENGINE=InnoDB;
+);
 
 
 INSERT INTO trail (trail_id, trail_name, distance, distance_units, elevation_gain, elevation_units, description, route_type, difficulty, general_area, origin) VALUES (1, "Golden Gate Park Trail", 6.1, "miles", 351, "ft", "Golden Gate Park Trail is a Bernie favorite. A 6.1 mile heavily trafficked loop trail located near San Francisco, California that features a lake and is good for all skill levels. The trail offers a number of activity options and is accessible year-round. Dogs are also able to use this trail but must be approved by Bernie.", "Loop", "Easy", "Golden Gate Park", "https://www.alltrails.com/trail/us/california/golden-gate-park-trail");
@@ -135,6 +135,13 @@ INSERT INTO trail (trail_id, trail_name, distance, distance_units, elevation_gai
 INSERT INTO trail (trail_id, trail_name, distance, distance_units, elevation_gain, elevation_units, description, route_type, difficulty, general_area, origin) VALUES (99, "Lorem in anim pariatur.", 14, "miles", "686", "ft", "Enim adipisicing duis. Magna labore veniam aliquip quis. Eiusmod dolore amet.", "Loop", "Moderate", "Occaecat id.", "http://www.ea.com/est/proident.html");
 INSERT INTO trail (trail_id, trail_name, distance, distance_units, elevation_gain, elevation_units, description, route_type, difficulty, general_area, origin) VALUES (100, "Fugiat ea Lorem.", 0, "miles", "1630", "ft", "Laboris reprehenderit et. Labore excepteur sit. Sunt ullamco excepteur consectetur veniam.", "Out & Back", "Easy", "Minim aliqua sint.", "http://www.labore.com/minim/ex.html");
 
+LOAD DATA LOCAL INFILE '/Users/ryanbrennan/Desktop/SDC/trail-service/database/milly.csv'
+INTO TABLE trail
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(trail_id, trail_name, distance, distance_units, elevation_gain, elevation_units, description, route_type, difficulty, general_area, origin);
 
 INSERT INTO tags (tag_id, tag_name) VALUES (1, "dogs on leash");
 INSERT INTO tags (tag_id, tag_name) VALUES (2, "hiking");
