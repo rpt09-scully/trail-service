@@ -18,6 +18,7 @@ const csvWriter = createCsvWriter({
   ]
 });
 
+let start = new Date();
 const records = [];
 
 for (var i = 101; i <= 1000000; i ++) {
@@ -36,9 +37,11 @@ for (var i = 101; i <= 1000000; i ++) {
   })
 }
 
-csvWriter.writeRecords(records)       // returns a promise
+csvWriter.writeRecords(records, start)       // returns a promise
     .then(() => {
-        console.log('ONE MILLION RECORDS!');
+      let end = new Date();
+      let seconds = (end.getTime() - start.getTime()) / 1000;
+      console.log('...Done - wrote seed-data.csv in ' + seconds + ' seconds');
     });
 
 
