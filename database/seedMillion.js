@@ -20,28 +20,54 @@ const csvWriter = createCsvWriter({
 
 let start = new Date();
 const records = [];
+let records2 = [];
+let count = 0;
 
-for (var i = 101; i <= 1000000; i ++) {
-  records.push({
-    trail_id: i,
-    trail_name: seedFuncs.setTrailName(),
-    distance: seedFuncs.setNumber(100),
-    distance_units: 'miles',
-    elevation_gain: seedFuncs.setNumber(1900),
-    elevation_units: 'ft',
-    description: seedFuncs.sentences(3, 5, 200),
-    route_type: seedFuncs.setRouteType(),
-    difficulty: seedFuncs.setDifficulty(),
-    general_area: seedFuncs.sentences(1, 3, 65),
-    origin: seedFuncs.setOrigin()
-  })
-}
+for (var i = 101; i <= 10000000; i ++) {
+  count +=1;
 
+  if (count <= 5000000) {
+    records.push({
+      trail_id: i,
+      trail_name: seedFuncs.setTrailName(),
+      distance: seedFuncs.setNumber(100),
+      distance_units: 'miles',
+      elevation_gain: seedFuncs.setNumber(1900),
+      elevation_units: 'ft',
+      description: seedFuncs.sentences(3, 5, 200),
+      route_type: seedFuncs.setRouteType(),
+      difficulty: seedFuncs.setDifficulty(),
+      general_area: seedFuncs.sentences(1, 3, 65),
+      origin: seedFuncs.setOrigin()
+    });
+
+  } else {
+    records2.push({
+      trail_id: i,
+      trail_name: seedFuncs.setTrailName(),
+      distance: seedFuncs.setNumber(100),
+      distance_units: 'miles',
+      elevation_gain: seedFuncs.setNumber(1900),
+      elevation_units: 'ft',
+      description: seedFuncs.sentences(3, 5, 200),
+      route_type: seedFuncs.setRouteType(),
+      difficulty: seedFuncs.setDifficulty(),
+      general_area: seedFuncs.sentences(1, 3, 65),
+      origin: seedFuncs.setOrigin()
+    });
+  };
+};
+
+
+//empty array where records
 csvWriter.writeRecords(records, start)       // returns a promise
     .then(() => {
-      let end = new Date();
-      let seconds = (end.getTime() - start.getTime()) / 1000;
-      console.log('...Done - wrote seed-data.csv in ' + seconds + ' seconds');
+      csvWriter.writeRecords(records2, start)
+      .then(() => {
+        let end = new Date();
+        let seconds = (end.getTime() - start.getTime()) / 1000;
+        console.log('...DONE!!! - wrote 10 million records to milly.csv in ' + seconds + ' seconds!!');
+      });
     });
 
 
