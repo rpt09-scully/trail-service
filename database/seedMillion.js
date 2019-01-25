@@ -1,6 +1,7 @@
 const loremIpsum = require('lorem-ipsum');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const seedFuncs = require('../generateSql.js')
+
 const csvWriter = createCsvWriter({
   path: './milly.csv',
   header: [
@@ -17,7 +18,10 @@ const csvWriter = createCsvWriter({
       {id: 'origin', title: 'origin'}
   ]
 });
-
+csvWriter.writeRecords([])
+  .then(() => {
+    console.log('...Done creating hero csv');
+  });
 let start = new Date();
 const records = [];
 let records2 = [];
