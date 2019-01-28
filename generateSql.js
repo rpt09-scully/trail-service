@@ -67,6 +67,15 @@ const setRouteType = function () {
   return types[indx];
 };
 
+const setTrailName = function () {
+  let types = ["Golden Gate Park Trail", "Crescent Creek Trail", 'Hope Point', 'Lost Lake Trail', 'Ressurection Pass Trail', "Alamere Falls via Coast Trail from Palomarin Trailhead",
+  "Coast Camp/Laguna Loop", "Presidio Bay Area Ridge Trail", "Presidio Ecology Trail", "BeltLine Eastside Trail From Piedmont Park", "Bull Sluice Lake",
+  "Cascade Springs Nature Preserve Outer Loop","Chastain Park Trail","Grant Park Loop Trail","Canyon Trail to Waipoo Falls","Kaiwa Ridge (Pillbox) Trail",
+  "Makapu'u Point Lighthouse Trail (Kaiwi)","Na Pali Coast (Kalalau) Trail","Wiliwilinui Bernie Ridge Trail"];
+  let indx = Math.floor(Math.random() * Math.floor(3));
+  return types[indx];
+};
+
 const setDifficulty = function () {
   let howHard = ['Easy', 'Moderate', 'BernieBuster'];
   let i = Math.floor(Math.random() * Math.floor(3));
@@ -84,6 +93,7 @@ const trailStrings = function () {
 
 // INSERT INTO trail_tags (trail_id, tag_id) VALUES (21, 8);
 
+
 const trailTags = function () {
   let str = '';
   for (let i = 21; i <= 100; i++) {
@@ -95,5 +105,15 @@ const trailTags = function () {
   return str;
 };
 
-module.exports.trailStrings = trailStrings;
-module.exports.trailTags = trailTags;
+
+module.exports = {
+  trailStrings,
+  trailTags,
+  setDifficulty,
+  setRouteType,
+  setOrigin,
+  setNumber,
+  words,
+  sentences,
+  setTrailName
+}

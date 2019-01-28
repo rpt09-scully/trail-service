@@ -11,7 +11,8 @@
   "scripts": {
     "react-dev": "webpack -d --env.ENVIRONMENT=dev --watch",
     "react-prod": "webpack --env.ENVIRONMENT=prod",
-    "seed-database": "mysql -u root -p < schema.sql",
+    "generate-data": "node database/seedMillion.js",
+    "seed-database": "npm run generate-data; mysql -u root -p < schema.sql",
     "server-dev": "nodemon server/index.js",
     "start": "node server/index.js",
     "test": "jest --detectOpenHandles"
@@ -19,9 +20,12 @@
   "dependencies": {
     "axios": "^0.18.0",
     "cors": "^2.8.5",
+    "csv-write-stream": "^2.0.0",
+    "csv-writer": "^1.2.0",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
+    "json2csv": "^4.3.3",
     "knex": "^0.15.2",
     "morgan": "^1.9.1",
     "mysql": "^2.16.0",
