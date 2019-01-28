@@ -4,7 +4,7 @@ const seedFuncs = require('../generateSql.js')
 
 let start = new Date();
 const main = (async () => {
-  const TOTAL_TRAIL_RECORDS = 10000000;
+  const tenMillion = 10000000;
 
   const csvWriter = createCsvWriter({
     path: './milly.csv',
@@ -27,8 +27,8 @@ const main = (async () => {
   csvWriter.writeRecords([])
 
   const records = [];
-  for (let i = 101; i < TOTAL_TRAIL_RECORDS + 1; i++) {
-    if (records.length > 99 || i === TOTAL_TRAIL_RECORDS) {
+  for (let i = 101; i < tenMillion + 1; i++) {
+    if (records.length > 99 || i === tenMillion) {
       await csvWriter.writeRecords(records);
       records.length = 0;
     }
@@ -48,7 +48,5 @@ const main = (async () => {
   }
 
 })();
-
-
 
 

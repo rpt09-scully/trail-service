@@ -11,7 +11,8 @@
   "scripts": {
     "react-dev": "webpack -d --env.ENVIRONMENT=dev --watch",
     "react-prod": "webpack --env.ENVIRONMENT=prod",
-    "seed-database": "mysql -u root -p < schema.sql",
+    "generate-data": "node database/seedMillion.js",
+    "seed-database": "npm run generate-data; mysql -u root -p < schema.sql",
     "server-dev": "nodemon server/index.js",
     "start": "node server/index.js",
     "test": "jest --detectOpenHandles"
