@@ -143,6 +143,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 ROWS
 (trail_id, trail_name, distance, distance_units, elevation_gain, elevation_units, description, route_type, difficulty, general_area, origin);
 
+
 INSERT INTO tags (tag_id, tag_name) VALUES (1, "dogs on leash");
 INSERT INTO tags (tag_id, tag_name) VALUES (2, "hiking");
 INSERT INTO tags (tag_id, tag_name) VALUES (3, "mountain biking");
