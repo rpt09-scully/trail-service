@@ -17,6 +17,7 @@ export default class TrailDescription extends React.Component {
     this._asyncRequest = axios.get(endpoint)
       .then(response => {
         this._asyncRequest = null;
+        console.log('in mount', response.data)
         this.setState({ trailDesc: response.data });
       })
       .catch((error) => {
@@ -35,6 +36,7 @@ export default class TrailDescription extends React.Component {
       // Render loading state...
       return <div className="fetching"></div>;
     } else {
+
       const trailTags = this.state.trailDesc.tags.map((tag, i) => <span key={i}>{tag}</span>);
       return (
         <div className={`${style.trailDesc} row flex-row justify-content-left col-8`}>

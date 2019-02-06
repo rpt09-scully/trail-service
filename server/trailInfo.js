@@ -75,6 +75,7 @@ router.get('/trailDescription', (req, res) => {
       elevationUnits: theTrail.elevation_units,
       routeType: theTrail.route_type,
     };
+    console.log(theTrail)
     db.getTags(theId, (tags) => {
       resObj.tags = tags;
       res.status(200).json(resObj);
