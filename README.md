@@ -1,130 +1,186 @@
-# Trail Service
+# System Design Capstone Log for Trails Service
 
-Trail service for Nine Trails Hack Reactor <abbr title="Front End Capstone">FEC</abbr> project. Supplies an API endpoint for trail detail data at `/:trailId/trailInfo` on `port 3001`.
-
-## Contents
-
-<!-- TOC updateOnSave:false -->
-  * [Motivation](#motivation)
-  * [Related Projects](#related-projects)
-  * [Code Style](#code-style)
-  * [Tech/Frameworks used](#techframeworks-used)
-  * [Code Example](#code-example)
-  * [Installation](#installation)
-    * [Installing Dependencies](#installing-dependencies)
-    * [Setup](#setup)
-  * [API Reference](#api-reference)
-    * [Internal End Points](#internal-endpoints)  
-  * [Tests](#tests)
-  * [Notes](#notes)
-<!-- /TOC -->
-
-## Motivation
-
-Part of the Team Scully FEC project implementing different services to be consumed by a proxy page representing a product detail page about hiking trails.
+## Table Of Contents:
++ [Related Projects](#Related-Projects)
++ [Requirements](#Requirements)
++ [Installation-for-MySQL-Implementation](#Installation/MySQL)
++ [Phase 1: Scale the Database](#Phase-1:-Scale-the-Database)
++ [Backlog / Noted Opportunities](#Backlog-/-Noted-Opportunities)
++ [Phase 2: Implement and Scale Secondary Database](#Phase-2:-Implement-and-Scale-Secondary-Database)
++ [Phase 3: Optimize Primary and Secondary Databases. Build CRUD Operation](#Phase-3:-Optimize-Primary-and-Secondary-Databases.-Build-CRUD-Operation)
++ [API Endpoints](#API-Endpoints)
++ [JSON Example](#JSON-Example)
 
 ## Related Projects
+- [Trails (FEC)](https://github.com/rpt09-scully/trail-service)
 
-* [paths-service](https://github.com/rpt09-scully/paths-service)
-* [profiles-service](https://github.com/rpt09-scully/profile-service)
-* [trail-photos-service](https://github.com/rpt09-scully/trail-photos-service)
-* trail-service: [Current]
-* [reviews-service](https://github.com/rpt09-scully/reviews-service)
+## Requirements
+ - Server: [Express](http://expressjs.com/)
+  - DB original: [MySQL](https://dev.mysql.com/doc/refman/5.7/en/)
+  - DB secondary: [MongoDB](https://docs.mongodb.com/manual/)
 
-## Code Style Guide
+## Installation/MySQL
+After cloning the project, go to the root directory then install all required dependencies by running
 
-[![Style Guide: Hack Reactor](https://img.shields.io/badge/Style%20Guide-Hack%20Reactor-blue.svg)](https://github.com/hackreactor-labs/eslint-config-hackreactor)
+```sh
+$> cd /path/to/trails-service
+npm install
+```
 
-## Tech/Frameworks used
+Start your MySQL database
+```sh
+$> mysql server.start
+```
 
-* Database: [mySQL](https://dev.mysql.com/doc/refman/5.7/en/) & [knex](https://knexjs.org/)  
-* Server: [Express](http://expressjs.com/), [axios](https://www.npmjs.com/package/axios)  
-* Client: [React](https://reactjs.org/)
+Setup .env file (for sql credentials)
+```sh
+$> touch.env
+```
 
-## Code Example
+Seed database `TrailsService` (change credentials as needed) with 10 million records
+```sh
+$> touch.env
+```
 
-Example JSON response to `http:localhost:3001/1/trailInfo` for a trail with an ID of `1`:
+Inside `.env` place your SQL credentials (change if needed)
+```
+# DB_HOST=localhost
+# DB_USER=root
+# DB_PASS=
+```
+
+To execute:
+
+```sh
+$ npm run server-dev
+```
+
+## Log
+
+## Phase 1: Scale the Database
+
+### DBMS Selection and Data Generation
+
+- [x] Select an DBMS technology that was not used in FEC; preferably of a different type as was used in FEC
+
+Working with the [trails-service](https://github.com/rpt09-lotus/trail-service) from FEC, which used MySQL.  I am refactoring the original database and testing it against MongoDB as my secondary
+
+> Think carefully about the use-cases for your service and design a schema that is realistic for what your service is doing. It's likely that your service is the source of truth for certain information so be sure to represent your information in a way that accomplishes the goals of your use-cases.
+
+The trails service retrieves data from the database for a given trail and provides a json response to `GET` requests of the `{trailID}/trailInfo` API end point. Currently, the seed script for the legacy codeis only generating only 136 unique records.  These unique records make up the `trails` table.  There is also a `tags` table with 1000+ records that are then used by the `trails` table.  As interesting as it would be to generate 50 million secondary records to correspond with my 10 million primary records, I will be creating a function that generates multiple `trail tags` to be includedin each primary rcord, thus eliminating the need for an additional MySQL table which for the purpose of this project, is unnecessary
+
+- [ ] Write a data generation script that can produce a minimum of 10M records and efficiently load this data into your service's DBMS. **Use your simulated dataset for ALL subsequent testing.**
+
+
+
+"Normalized data models describe relationships using [references](https://docs.mongodb.com/manual/reference/database-references/) between documents."[3]
+
+> In general, use normalized data models:
+>
+> - when embedding would result in duplication of data but would not provide sufficient read performance advantages to outweigh the implications of the duplication.
+> - to represent more complex many-to-many relationships.
+> - to model large hierarchical data sets.
+
+"...client-side applications must issue follow-up queries to resolve the references. In other words, normalized data models can require more round trips to the server."
+
+##Phase 2: Implement and Scale Secondary Database
+#### Schema Notes
+
+Draft Model for Trails:
+
+```JavaScript
+{
+  trail_id: {
+    type: Number,
+    required: true
+  },
+  trail_name: {
+    type: String,
+    required: true
+  },
+  distance: {
+    type: Number,
+    required: true
+  },
+  distance_units: {
+    type: String,
+    required: true
+  },
+  elevation_gain: {
+    type: Number,
+    required: true
+  },
+  elevation_units: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  route_type: {
+    type: String,
+    required: true
+  },
+  difficulty: {
+    type: String,
+    required: true
+  },
+  tags: {
+    type: [String],
+    required: true
+  },
+  general_area: {
+    type: String,
+    required: true
+  },
+  origin: {
+    type: String,
+    required: true
+  },
+}
+```
+## Phase 3: Optimize Primary and Secondary Databases. Build CRUD Operation
+
+
+### API Enpoints
+
++ DELETE `/:trailId/delete`
+  - Given a trailId, deletes the trail information.
++ GET `/:trailId/trailInfo`
+  - Given a trailId, retrieves all trail information for that trail.
+
+
+### JSON Example
+
+Example JSON response to `http:localhost:3001/6784641/trailInfo` for a trail with an ID of 6784641:
 
 ```json
 {
   "data": {
     "attributes": {
       "trail_name": "Golden Gate Park Trail",
-      "distance": 6,
+      "distance": 73,
       "distance_units": "miles",
-      "elevation_gain": 351,
+      "elevation_gain": 1732,
       "elevation_units": "ft",
-      "description": "Golden Gate Park Trail is a Bernie favorite. A 6.1 mile heavily trafficked loop trail located near San Francisco, California that features a lake and is good for all skill levels. The trail offers a number of activity options and is accessible year-round. Dogs are also able to use this trail but must be approved by Bernie.",
+      "description": "Magna deserunt ea proident laborum. Laboris veniam. Nisi aliquip sint magna.",
       "route_type": "Loop",
-      "difficulty": "Easy",
-      "general_area": "Golden Gate Park",
-      "origin": "https://www.alltrails.com/trail/us/california/golden-gate-park-trail",
-      "tags": ["dogs on leash", "hiking", "mountain biking", "trail running", "walking", "views", "wildlife", "muddy", "dog friendly", "backpacking", "birding", "historic site"]
+      "difficulty": "BernieBuster",
+      "general_area": "Ea adipisicing",
+      "origin": "http://www.labore.com/cupidatat/aliqua.html",
+      "tags": []
     },
-    "id": "1",
+    "id": "6784641",
     "type": "trail"
   }
 }
+
 ```
 
-Note: This structure _mostly_ follows the [JSON API](https://jsonapi.org/format/) specification. The team didn't get crazy with [relationships](https://jsonapi.org/format/#document-resource-object-relationships) so ¯\_(ツ)_/¯.  
-
-## Installation
-
-### Installing Dependencies
-
-```sh
-# cd into directory
-$ cd trail-service
-# install dependencies
-$ npm install
-```
-
-### Setup
-
-``` sh
-# cd into directory
-$ cd trail-service
-# setup .env file (for sql creds)
-$ touch .env 
-# seed database `trailService` (change credentials as needed)  
-# you can either run  
-$ npm run seed-database  
-# which executes mysql -u root -p < schema.sql  
-# OR you can simply run  
-$ mysql -u root < schema.sql
-# note that you may use another user account if `root` access is not available
-# from the command line, use or modify the `root` user as needed
-```
-
-Inside `.env` place your SQL credentials (change if needed)  
-``` 
-DB_HOST=localhost
-DB_USER=root
-DB_PASS=
-```
-
-To execute:
-
-``` sh
-$ npm run server-dev
-```
-
-## API Reference
-
-This `trail-service` responds to requests for trail detail data when it receives a trail ID in the format `/:trailId/trailInfo`. See [code example](#code-example) above for response structure.
-
-### Internal End Points
-
-The `trail-service` API described above serves the other services in the project, see [Related Projects](#related-projects) above. The `/:trailId/banner` and `/:trailId/trailDescription` end points provide pre-shaped data responses to the two React components, `banner` and `traildescription`. Both of these additional end points are publicly available, but not intended to be consumed by other services in the [Related Projects](#related-projects).
-
-## Tests
-
-```sh
-$ npm test
-```
-
-* * *
-
-## Notes
-
+-
+[1]: https://docs.mongodb.com/manual/core/data-modeling-introduction/
+[2]: https://docs.mongodb.com/manual/core/data-model-design/#data-modeling-embedding
+[3]: https://docs.mongodb.com/manual/core/data-model-design/#normalized-data-models
+[4]: https://docs.mongodb.com/manual/reference/program/mongoimport/index.html
+[5]: https://stackoverflow.com/a/44623546
