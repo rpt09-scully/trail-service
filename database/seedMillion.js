@@ -4,7 +4,7 @@ const seedFuncs = require('../generateSql.js')
 
 let start = new Date();
 const main = (async () => {
-  const tenMillion = 1000;
+  const tenMillion = 10000000;
 
   const csvWriter = createCsvWriter({
     path: './milly.csv',

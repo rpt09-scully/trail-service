@@ -68,7 +68,6 @@ router.get('/trailDescription', (req, res) => {
   db.getTrail(theId, (row) => {
     // trail object for response to trailDescription component
     var theTrail = row[0];
-    console.log('HEY IM THE TRAIL', theTrail)
     var resObj = {
       description: theTrail.description,
       distance: theTrail.distance,
@@ -76,13 +75,9 @@ router.get('/trailDescription', (req, res) => {
       elevationGain: theTrail.elevation_gain,
       elevationUnits: theTrail.elevation_units,
       routeType: theTrail.route_type,
-      tags: theTrail.tags
+      tags: theTrail.tags.split(',')
     };
-    console.log(theTrail)
-    db.getTags(theId, (tags) => {
-      resObj.tags = tags;
-      res.status(200).json(resObj);
-    });
+    res.status(200).json(resObj);
   });
 });
 
