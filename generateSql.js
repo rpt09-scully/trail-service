@@ -171,7 +171,7 @@ const tags = () => {
 
   for (let i = 0; i < numOfTags; i++) {
     let num = Math.floor(Math.random() * 20);
-    str += trailTags[num] + ' ';
+    str += trailTags[num] + ',';
   }
 
   return str;
@@ -190,4 +190,3 @@ module.exports = {
   tags
 };
 
-console.log(tags())
