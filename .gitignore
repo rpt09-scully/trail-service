@@ -1,3 +1,11 @@
+.env
+node_modules/
+package-lock.json
+.notes
+.nvmrc
+.ideas
+# test/
+
 ## MAC files ##
 .DS_Store
 
@@ -22,5 +30,10 @@ coverage
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/
-dist/
+#dist/
 
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/
+.ebextensions/
+.ebignore
